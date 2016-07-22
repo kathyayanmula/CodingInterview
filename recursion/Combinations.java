@@ -46,6 +46,7 @@ public class Combinations {
 		ArrayList<Integer> input = new ArrayList<>();
 		ArrayList<String> stringInput = new ArrayList<>();
 		stringInput.add("a");stringInput.add("a"); stringInput.add("c");
+<<<<<<< HEAD
 		for(int i = 1; i < 4; i++)
 			input.add(i);
 		Combinations test = new Combinations();
@@ -53,6 +54,15 @@ public class Combinations {
 			System.out.println(list);
 //		for(ArrayList<String> list: test.getCombinations(stringInput))
 //			System.out.println(list);
+=======
+		for(int i = 1; i < 5; i++)
+			input.add(i);
+		Combinations test = new Combinations();
+//		for(ArrayList<Integer> list: test.getCombinations(input))
+//			System.out.println(list);
+		for(ArrayList<String> list: test.getCombinations(stringInput))
+			System.out.println(list);
+>>>>>>> 1a488dda4e60c597a8ed368c8ab560aa87173cef
 		
 	}
 

@@ -18,7 +18,10 @@ public Node mergeSorter(Node head){
 			slow = slow.next;
 			fast = fast.next.next;
 		}
+<<<<<<< HEAD
 		//checking if more than one element is present
+=======
+>>>>>>> 1a488dda4e60c597a8ed368c8ab560aa87173cef
 		if(slow_prev != null)
 			slow_prev.next = null;
 		second = slow;
