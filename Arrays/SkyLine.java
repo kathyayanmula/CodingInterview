@@ -1,7 +1,8 @@
-package Arrays;
+package arrays;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import recursion.Combinations;
@@ -13,16 +14,18 @@ public class SkyLine {
 		List<ArrayList<Integer>> heights = new ArrayList<>();
 		
 		for(Building building: buildings){
-			heights.add(new ArrayList<Integer>(){{add(building.left); add(building.right);}});
-			heights.add(new ArrayList<Integer>(){{add(building.height); add(-building.right);}});
+			heights.add(new ArrayList<Integer>(){{add(building.left); add(-building.right);}});
+			heights.add(new ArrayList<Integer>(){{add(building.height); add(building.right);}});
 		}
 		
 		Collections.sort(heights, new Comparator<ArrayList<Integer>>(){
 			public int compare(ArrayList<Integer> l1, ArrayList<Integer> l2){
-				if(l1.get(0) == l2.get(0))
+				if(l1.get(0) != l2.get(0))
 					return l1.get(0) - l2.get(0);
 				return l1.get(1) - l2.get(1);
 		}});
+		
+		
 		
 		return result;	
 		
