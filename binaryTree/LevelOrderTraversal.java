@@ -5,45 +5,37 @@ import java.util.Queue;
 
 public class LevelOrderTraversal {
 	
- 	public void levelOrderQueue(Node root){
- 		Queue q = new LinkedList();
- 		int levelNodes =0; 
-		if(root==null) return;
- 		q.add(root);
- 		while(!q.isEmpty()){
- 			levelNodes = q.size();
- 			while(levelNodes>0){
-				Node n = (Node)q.remove();
-				System.out.print(" " + n.data);
-				if(n.left!=null) q.add(n.left);
-				if(n.right!=null) q.add(n.right);
-				levelNodes--;
-			}
-			System.out.println("");
+	public void levelOrder(TreeNode startNode) {  
+		Queue<TreeNode> queue=new LinkedList<TreeNode>();  
+		queue.add(startNode);  
+		int levelSize = 0;
+		while(!queue.isEmpty())  
+		{  levelSize = queue.size();
+		while(levelSize > 0){
+			TreeNode tempNode=queue.poll();  
+			System.out.printf("%d ",tempNode.val);
+			if(tempNode.left!=null)  
+				queue.add(tempNode.left);  
+			if(tempNode.right!=null)  
+				queue.add(tempNode.right);
+			levelSize--;
 		}
-	}
+		System.out.println();
+		}  
+	}  
 	public static void main (String[] args) throws java.lang.Exception
 	{
-		Node root = new Node(5);
-		root.left = new Node(10);
-		root.right = new Node(15);
-		root.left.left = new Node(20);
-		root.left.right = new Node(25);
-		root.right.left = new Node(30);
-		root.right.right = new Node(35);
+		TreeNode root = new TreeNode(5);
+		root.left = new TreeNode(10);
+		root.right = new TreeNode(15);
+		root.left.left = new TreeNode(20);
+		root.left.right = new TreeNode(25);
+		root.right.left = new TreeNode(30);
+		root.right.right = new TreeNode(35);
 		
 		LevelOrderTraversal i  = new LevelOrderTraversal();
 		System.out.println(" Output by Better Approach : ");
-		i.levelOrderQueue(root);
+		i.levelOrder(root);
 	}
 }
-class Node{
-	int data;
-	Node left;
-	Node right;
-	public Node(int data){
-		this.data = data;
-		this.left = null;
-		this.right =null;
-	}
-}
+

@@ -9,20 +9,6 @@ public class Combinations {
 		ArrayList<T> temp = new ArrayList<T>();
 		writeCombinations(input, result, 0, temp);
 		
-//		Collections.sort(result, new Comparator<ArrayList<T>>() {
-//	        @Override
-//	        public int compare(ArrayList<T> a, ArrayList<T> b) {
-//	            int an = a.size();
-//	            int bn = b.size();
-//	            for (int i = 0; i < Math.min(an, bn); i++) {
-//	                int cmp = Integer.compare(a.get(i), b.get(i));
-//	                if (cmp != 0)
-//	                    return cmp;
-//	            }
-//	            return Integer.compare(a.size(), b.size());
-//	        }
-//	    });
-		
 		return result;
 	}
 	
@@ -51,8 +37,9 @@ public class Combinations {
 		Combinations test = new Combinations();
 //		for(ArrayList<Integer> list: test.getCombinations(input))
 //			System.out.println(list);
-		for(ArrayList<String> list: test.getCombinations(stringInput))
-			System.out.println(list);
+//		for(ArrayList<String> list: test.getCombinations(stringInput))
+		System.out.println(test.getCombinations(stringInput));
+		System.out.println(test.getCombinations(input));
 		
 	}
 

@@ -1,72 +1,40 @@
 package binaryTree;
-
-
-import java.util.Queue;  
-import java.util.LinkedList;  
-public class BinaryTree {  
-
-
-	public static class TreeNode  
-	{  
-		int data;  
-		TreeNode left;  
-		TreeNode right;  
-		TreeNode(int data)  
-		{  
-			this.data=data;  
-		}  
-	}  
+ 
+public class BinaryTree {   
 
 	// prints in level order  
-	public static void levelOrderTraversal(TreeNode startNode) {  
-		Queue<TreeNode> queue=new LinkedList<TreeNode>();  
-		queue.add(startNode);  
-		int levelSize = 0;
-		while(!queue.isEmpty())  
-		{  levelSize = queue.size();
-		while(levelSize > 0){
-			TreeNode tempNode=queue.poll();  
-			System.out.printf("%d ",tempNode.data);
-			if(tempNode.left!=null)  
-				queue.add(tempNode.left);  
-			if(tempNode.right!=null)  
-				queue.add(tempNode.right);
-			levelSize--;
+	TreeNode root;
+	
+	public BinaryTree(){
+		root = null;
+	}
+	
+	public void insert(int val){
+		root = insert(root, val);	
+	}
+	
+	public TreeNode insert(TreeNode root, int val){
+		if(root == null){
+			root = new TreeNode(val);
+			return root;
 		}
-		System.out.println();
-		}  
-	}  
-	public static void main(String[] args)  
-	{  
-		//BinaryTree bi=new BinaryTree();  
-		// Creating a binary tree  
-		TreeNode rootNode=createBinaryTree();  
-		System.out.println("Level Order traversal of binary tree will be:");  
-		levelOrderTraversal(rootNode);  
-	}  
+		if(root.val >= val)
+			root.left = insert(root.left, val);
+		else
+			root.right = insert(root.right, val);
+		return root;
+	}
+	
+	public TreeNode search(TreeNode root, int val){
 
-	public static TreeNode createBinaryTree()  
-	{  
-
-		TreeNode rootNode =new TreeNode(40);  
-		TreeNode node20=new TreeNode(20);  
-		TreeNode node10=new TreeNode(10);  
-		TreeNode node30=new TreeNode(30);  
-		TreeNode node60=new TreeNode(60);  
-		TreeNode node50=new TreeNode(50);  
-		TreeNode node70=new TreeNode(70);  
-
-		rootNode.left=node20;  
-		rootNode.right=node60;  
-
-		node20.left=node10;  
-		node20.right=node30;  
-
-		node60.left=node50;  
-		node60.right=node70;  
-
-		return rootNode;  
-	}  
+		if(root == null || root.val == val)
+			return root;
+		if(val < root.val)
+			return search(root.left, val);
+		else
+			return search(root.right,val);	
+	}
 }  
+
 
 

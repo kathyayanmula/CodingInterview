@@ -20,7 +20,7 @@ public class MergeSorter {
 	
 	public void merge(int[] input, int[] temp ,int left, int right, int rightEnd){
 		int leftEnd = right - 1;
-		int iterations = rightEnd - left + 1;
+//		int iterations = rightEnd - left + 1;
 		int i = left;
 		while(left <= leftEnd && right <= rightEnd){
 			if(input[left] <= input[right])
@@ -37,15 +37,20 @@ public class MergeSorter {
 			temp[i++]=input[right++];
 		}
 		
-		for(i = 0; i < iterations; i++, rightEnd--){
-			input[rightEnd] = temp[rightEnd];
+//		for(i = 0; i < iterations; i++, rightEnd--){
+//			input[rightEnd] = temp[rightEnd];
+//		}
+	
+		for(i = 0; i <= rightEnd; i++){
+			input[i] = temp[i];
 		}
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MergeSorter test = new MergeSorter();
-		int[] input = {7,5,4,3,3,2,1};
+//		int[] input = {7,5,4,3,3,2,1};
+		int[] input = {3,2,1,1,5,6,4,2,7};
 		test.mergerSorter(input);
 		System.out.println(Arrays.toString(input));
 	}

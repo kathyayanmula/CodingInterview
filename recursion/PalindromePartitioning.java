@@ -28,26 +28,20 @@ public class PalindromePartitioning {
 	
 	public void palindromeList(String str, int start, ArrayList<ArrayList<String>> result, ArrayList<String> temp ){
 		if(start == str.length()){
-			ArrayList<String> partition = new ArrayList<String>(temp);
-			result.add(partition);
+			result.add(new ArrayList<String>(temp));
 			return;
 		}
 		
-		for(int i = start+1; i <= str.length(); i++){
-			String subStr = str.substring(start, i);
-			if(isPalindrome(subStr)){
-				temp.add(subStr);
-				palindromeList(str, i, result, temp);
+		for(int i = start; i < str.length(); i++){
+			if(isPalindrome(str, start, i)){
+				temp.add(str.substring(start, i+1));
+				palindromeList(str, i+1, result, temp);
 				temp.remove(temp.size() - 1);
 			}
 		}
 	}
 	
-	public boolean isPalindrome(String str){
-		if(str.length() < 2)
-			return true;
-		int start = 0;
-		int end = str.length() - 1;
+	public boolean isPalindrome(String str, int start, int end){
 		while(start < end){
 			if(str.charAt(start) != str.charAt(end))
 				return false;
